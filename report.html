@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Report Hazard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    select, input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 20px; padding: 10px 20px; background: red; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h1>Report a Hazard</h1>
+
+  <form>
+    <label>Hazard Type</label>
+    <select>
+      <option>Landslide</option>
+      <option>Road Blockage</option>
+      <option>Ground Crack</option>
+      <option>Slope Movement</option>
+      <option>Flash Flood</option>
+    </select>
+
+    <label>Photo</label>
+    <input type="file" accept="image/*">
+
+    <label>Location</label>
+    <button type="button" onclick="getLocation()">📍 Detect Location</button>
+    <p id="locationText">Location not detected yet</p>
+
+    <label>Description</label>
+    <textarea rows="4" placeholder="Describe what you saw..."></textarea>
+
+    <button type="submit">SUBMIT</button>
+  </form>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          document.getElementById("locationText").innerText =
+            "Lat: " + position.coords.latitude + ", Lng: " + position.coords.longitude;
+        });
+      } else {
+        document.getElementById("locationText").innerText = "Geolocation not supported";
+      }
+    }
+  </script>
+</body>
+</html>
