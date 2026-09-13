@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Disaster Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { text-align: center; }
+    .stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 20px 0; }
+    .card { background: white; border-radius: 8px; padding: 20px; text-align: center; width: 150px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin: 10px; }
+    .card h2 { margin: 0; font-size: 28px; }
+    .card p { margin: 5px 0 0; color: #555; }
+    .reports { background: white; border-radius: 8px; padding: 15px; margin-top: 20px; }
+    .report-item { padding: 10px; border-bottom: 1px solid #eee; }
+    .red { color: red; font-weight: bold; }
+    .orange { color: orange; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Disaster Dashboard</h1>
+
+  <div class="stats">
+    <div class="card"><h2>04</h2><p>Active Alerts</p></div>
+    <div class="card"><h2>07</h2><p>High Risk Zones</p></div>
+    <div class="card"><h2>32</h2><p>Citizen Reports</p></div>
+    <div class="card"><h2>05</h2><p>Blocked Roads</p></div>
+  </div>
+
+  <div class="reports">
+    <h3>Recent Reports</h3>
+    <div class="report-item"><span class="red">Landslide</span> - District X - 10 min ago</div>
+    <div class="report-item"><span class="orange">Road Blockage</span> - District Y - 18 min ago</div>
+    <div class="report-item"><span class="red">Slope Crack</span> - District Z - 25 min ago</div>
+  </div>
+</body>
+</html>
