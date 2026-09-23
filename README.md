@@ -1,69 +1,48 @@
-# 🏔️ Landslide Watch
+# Landslide Watch
 
-**AI-Based Early Warning and Landslide Risk Monitoring System in NER**
+**AI-Based Landslide Early Warning & Risk Monitoring System for North East Region (NER), India**
 
-Smart India Hackathon 2026 — Problem Statement: AI-Based Early Warning and Landslide Risk Monitoring System in NER
+Built for Smart India Hackathon (SIH) 2026.
 
-🔗 **Live Demo:** https://raksita-priya.github.io/landslide-watch-sih/
+## Overview
 
----
-
-## Problem
-
-The North Eastern Region (NER) frequently faces landslides, flash floods, and road blockages due to heavy rainfall, fragile terrain, and unplanned hill cutting. Monitoring today is mostly reactive and depends on manual reporting, with no real-time predictive system to warn authorities or communities before disaster strikes.
-
-## Solution
-
-Landslide Watch is an AI-assisted platform that:
-- Analyses rainfall, soil moisture, slope, elevation & historical landslide data
-- Predicts landslide risk and displays it on a live GIS map
-- Lets citizens report hazards (photos, location, description) directly from the field
-- Verifies reports through **crowd-confirmation** — once ~5-6 nearby people confirm a report, it's automatically marked ✅ Verified, filtering out false alarms
-- Generates warnings for an authority dashboard
-- Supports multiple languages (Hindi, Assamese, Bengali) via an in-browser translator
+Landslide Watch is a web-based prototype that monitors landslide risk across the North East Region of India. It combines historical environmental data with a simple risk-visualization map to help communities and authorities identify vulnerable zones and respond to hazards faster.
 
 ## Features
 
-| Page | What it does |
-|---|---|
-| `index.html` | Home page with navigation to all modules |
-| `map.html` | Interactive Leaflet.js GIS map with colour-coded risk markers |
-| `report.html` | Citizen hazard reporting form (type, photo, GPS location, description) |
-| `warning.html` | High-risk alert screen showing reason & recommended action |
-| `dashboard.html` | Authority dashboard — live stats + crowd-verification on citizen reports |
+- **Risk Map** — Interactive map showing landslide risk levels (Low / Moderate / High / Critical) across NER, with rainfall, elevation, slope, and susceptibility data in each location's popup.
+- **Report Hazard** — Lets users report a landslide hazard they observe.
+- **Current Warnings** — Displays active landslide warnings.
+- **Risk Status Dashboard** — Overview of current risk status.
+- **Multi-language support** — Site can be viewed in Hindi, Assamese, Bengali, and Manipuri (Meitei) via one-click translation links.
+
+## Data Sources
+
+- **Rainfall data** — India Meteorological Department (IMD)
+- **Elevation & slope data** — SRTM (Shuttle Radar Topography Mission), via Bhuvan/OpenTopography
+- **Landslide susceptibility** — National Remote Sensing Centre (NRSC), ISRO
+
+*Note: Sample/reference values are used for this prototype demo. Live API integration with these sources is planned as future scope.*
 
 ## Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend (planned):** Python + Flask
-- **AI/ML (planned):** pandas, numpy, scikit-learn
-- **GIS Map:** Leaflet.js
-- **Database (planned):** SQLite
-- **Hosting:** GitHub Pages
+- HTML, CSS, JavaScript
+- [Leaflet.js](https://leafletjs.com/) for interactive mapping
+- OpenStreetMap for map tiles
+- Google Translate for multi-language support
+- Hosted on GitHub Pages
 
-## Prototype Status
+## Live Demo
 
-✅ 5 working pages built & deployed
-✅ Crowd-verification for citizen reports (live demo)
-✅ Multilingual widget (Hindi, Assamese, Bengali)
-🔜 AI risk-prediction model, backend, real data source integration
-
-## Data Sources (planned/reference)
-
-- IMD — rainfall & weather data
-- SRTM / DEM datasets — terrain & elevation
-- NRSC Landslide Atlas — historical landslide inventories
-- NDMA guidelines — landslide risk mitigation
-
-## Team
-
-**[Your Team Name]** — Smart India Hackathon 2026
+https://raksita-priya.github.io/landslide-watch-sih/
 
 ## Future Scope
 
-- Real AI/ML risk-prediction model trained on official datasets
-- Backend + database integration (Flask + SQLite)
-- Offline-first sync for low-network areas
-- SMS/push notification alerts
-- Migrate translator to Google Cloud Translation API (current widget is deprecated Oct 2026)
-- Integration with government weather & satellite APIs
+- Live integration with IMD, SRTM, and NRSC APIs for real-time data
+- AI/ML-based landslide risk prediction model
+- SMS/push notification alerts for at-risk communities
+- Mobile app version
+
+## Team
+
+Built by Raksita Priya and team for Smart India Hackathon 2026.
