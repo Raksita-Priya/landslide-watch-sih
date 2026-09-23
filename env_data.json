@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Site A",
+    "lat": 25.57,
+    "lng": 91.88,
+    "risk": "LOW",
+    "rainfall_mm_avg_monsoon": 410,
+    "elevation_m": 980,
+    "slope_deg": 12,
+    "susceptibility": "Low"
+  },
+  {
+    "name": "Site B",
+    "lat": 26.14,
+    "lng": 91.73,
+    "risk": "MODERATE",
+    "rainfall_mm_avg_monsoon": 560,
+    "elevation_m": 1450,
+    "slope_deg": 22,
+    "susceptibility": "Moderate"
+  },
+  {
+    "name": "Site C",
+    "lat": 27.48,
+    "lng": 94.90,
+    "risk": "HIGH",
+    "rainfall_mm_avg_monsoon": 780,
+    "elevation_m": 2100,
+    "slope_deg": 34,
+    "susceptibility": "High"
+  },
+  {
+    "name": "Site D",
+    "lat": 25.67,
+    "lng": 94.11,
+    "risk": "CRITICAL",
+    "rainfall_mm_avg_monsoon": 920,
+    "elevation_m": 2450,
+    "slope_deg": 41,
+    "susceptibility": "Very High"
+  }
+]

@@ -6,34 +6,62 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
   <style>
     #map { height: 500px; width: 100%; }
+    #legend {
+      font-family: sans-serif;
+      font-size: 13px;
+      background: #fff;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      max-width: 420px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>Landslide Risk Map</h1>
   <div id="map"></div>
+  <div id="legend">
+    <b>Historical reference data:</b> Rainfall — IMD, Elevation/Slope — SRTM (via Bhuvan/OpenTopography),
+    Landslide susceptibility — NRSC. Sample values shown for demo; live API integration is planned future scope.
+  </div>
 
   <script>
     var map = L.map('map').setView([25.5, 93.0], 7);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-    function addMarker(lat, lng, risk, color) {
-      L.circleMarker([lat, lng], {
+    function addMarker(site) {
+      var color = { LOW: "green", MODERATE: "yellow", HIGH: "orange", CRITICAL: "red" }[site.risk] || "gray";
+
+      var popupHtml =
+        "<b>" + site.name + "</b><br>" +
+        "Risk: " + site.risk + "<br>" +
+        "Rainfall (monsoon avg): " + site.rainfall_mm_avg_monsoon + " mm <i>(IMD)</i><br>" +
+        "Elevation: " + site.elevation_m + " m <i>(SRTM)</i><br>" +
+        "Slope: " + site.slope_deg + "&deg; <i>(SRTM)</i><br>" +
+        "Susceptibility: " + site.susceptibility + " <i>(NRSC)</i>";
+
+      L.circleMarker([site.lat, site.lng], {
         radius: 10,
         fillColor: color,
         color: "#000",
         weight: 1,
         fillOpacity: 0.8
-      }).addTo(map).bindPopup("Risk: " + risk);
+      }).addTo(map).bindPopup(popupHtml);
     }
 
-    addMarker(25.57, 91.88, "LOW", "green");
-    addMarker(26.14, 91.73, "MODERATE", "yellow");
-    addMarker(27.48, 94.90, "HIGH", "orange");
-    addMarker(25.67, 94.11, "CRITICAL", "red");
+    fetch('env_data.json')
+      .then(function (res) { return res.json(); })
+      .then(function (sites) { sites.forEach(addMarker); })
+      .catch(function (err) {
+        console.error("Could not load env_data.json", err);
+        // fallback so the map still shows something if fetch fails
+        addMarker({ name: "Site A", lat: 25.57, lng: 91.88, risk: "LOW", rainfall_mm_avg_monsoon: "-", elevation_m: "-", slope_deg: "-", susceptibility: "-" });
+      });
   </script>
 </body>
 </html>
